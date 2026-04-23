@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Surprise</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="scene-glow scene-glow-left"></div>
+  <div class="scene-glow scene-glow-right"></div>
+
+  <main class="app-shell">
+    <section class="phone-frame">
+      <div class="status-pill">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="stage">
+        <div class="floating-hearts" aria-hidden="true">
+          <span>&#10084;</span>
+          <span>&#10084;</span>
+          <span>&#10084;</span>
+          <span>&#10084;</span>
+          <span>&#10084;</span>
+        </div>
+
+        <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+        <section class="screen is-active" id="questionScreen">
+          <div class="speech-bubble hidden" id="speechBubble">ze3ma ze3ma?!</div>
+
+          <div class="character-wrap">
+            <img class="character-art sticker-bear" src="./bears-hug.gif" alt="cute sitting bear" />
+          </div>
+
+          <div class="copy-block">
+            <p class="eyebrow" id="eyebrowText">Question 1</p>
+            <h1 id="mainTitle">Wach Katbghinii?</h1>
+            <p class="subtext" id="subText">Jawbini b sra7a... ana msta3d lkolchi.</p>
+          </div>
+
+          <div class="button-zone" id="buttonZone">
+            <button class="choice-btn yes-btn" id="yesBtn">AH</button>
+            <button class="choice-btn no-btn" id="noBtn">LA</button>
+          </div>
+        </section>
+
+        <section class="screen" id="celebrationScreen">
+          <div class="celebration-top">
+            <p class="eyebrow">Mission Complete</p>
+            <h2>AAAA! kent 3aref kathamqi eliii</h2>
+            <p class="subtext">Lah ykhalik lia da2imann &#10084;</p>
+          </div>
+
+          <div class="hug-scene">
+            <img class="hug-img" src="./bear2.gif" alt="bear and panda hugging" />
+          </div>
+
+          <div class="love-line" id="loveLine">&#10084; &#10084; &#10084; &#10084; &#10084;</div>
+
+          <div class="celebration-actions">
+            <button class="choice-btn yes-btn" id="replayBtn">Replay</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
