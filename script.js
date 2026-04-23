@@ -46,7 +46,7 @@ const finalLines = [
 let noCount = 0;
 let confettiTimer = null;
 
-function growYesButton() {
+function updateQuestionState() {
   const state = pleadingStates[Math.min(noCount - 1, pleadingStates.length - 1)];
   eyebrowText.textContent = state.eyebrow;
   speechBubble.textContent = state.bubble;
@@ -54,29 +54,13 @@ function growYesButton() {
   mainTitle.textContent = state.title;
   subText.textContent = state.sub;
 
-  // Grow the YES button with a bouncy pulse effect
-  const growStep = Math.min(noCount, 5);
-  const newPadding = 1.15 + growStep * 0.25;
-  const newFontSize = 1.35 + growStep * 0.15;
-  const newMinWidth = 8 + growStep * 1.5;
-
-  yesBtn.style.padding = `${newPadding}rem ${newPadding + 0.85}rem`;
-  yesBtn.style.fontSize = `${newFontSize}rem`;
-  yesBtn.style.minWidth = `${newMinWidth}rem`;
-
-  // Pulse animation on each click
-  yesBtn.classList.remove("pulse-grow");
-  void yesBtn.offsetWidth; // trigger reflow to restart animation
-  yesBtn.classList.add("pulse-grow");
-
-  // Shrink the NO button slightly
-  const noScale = Math.max(1 - growStep * 0.08, 0.55);
-  noBtn.style.transform = `scale(${noScale})`;
-  noBtn.style.opacity = Math.max(1 - growStep * 0.1, 0.5);
+  // Only grow the YES button
+  const yesScale = 1 + Math.min(noCount * 0.15, 1.35);
+  yesBtn.style.transform = `scale(${yesScale})`;
 }
 
 function createConfettiBurst() {
-  const colors = ["#f166a5", "#ffd166", "#ff85b2", "#b8f2e6", "#f4978e"];
+  const colors = ["#f166a5", "#ffd166", "#ff85b2", "##b8f2e6", "#f4978e"];
 
   for (let i = 0; i < 28; i += 1) {
     const piece = document.createElement("span");
@@ -122,13 +106,7 @@ function resetExperience() {
   subText.textContent = "Jawbini b sra7a... ana msta3d lkolchi.";
   confettiLayer.replaceChildren();
 
-  // Reset button styles
-  yesBtn.style.padding = "";
-  yesBtn.style.fontSize = "";
-  yesBtn.style.minWidth = "";
-  yesBtn.classList.remove("pulse-grow");
-  noBtn.style.transform = "";
-  noBtn.style.opacity = "";
+  yesBtn.style.transform = "";
 }
 
 yesBtn.addEventListener("click", startCelebration);
@@ -136,12 +114,12 @@ yesBtn.addEventListener("click", startCelebration);
 noBtn.addEventListener("click", () => {
   noCount += 1;
 
-  if (noCount >= 5) {
+  if (noCount >= 10) {
     startCelebration();
     return;
   }
 
-  growYesButton();
+  updateQuestionState();
 });
 
 replayBtn.addEventListener("click", resetExperience);
